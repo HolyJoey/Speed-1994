@@ -18,7 +18,7 @@ menu.my_root():slider("Kaboom Speed", {"kaboomspeed"}, "Change at what speed the
     kaboomSpeed = tresholdChanger
 end)
 
-menu.toggle_loop(menu.my_root(), "Speed (1994)", {"speed1994"}, "You better keep driving above the speed treshold or else... BOOM!", function(on)
+menu.toggle_loop(menu.my_root(), "Speed (1994)", {"speed1994"}, "There is a bomb on a bus. Once the bus goes 50 MPH, the bomb is armed. If it drops below 50, it blows up.", function(on)
     if not spawnedBus then
         spawnBus()
         spawnedBus = true
@@ -26,7 +26,7 @@ menu.toggle_loop(menu.my_root(), "Speed (1994)", {"speed1994"}, "You better keep
     local speed = math.ceil(ENTITY.GET_ENTITY_SPEED(entities.get_user_vehicle_as_handle(false)) * 2.236936)
     if speed >= kaboomSpeed then
         if not kaboomNotif then
-            util.toast("Hit the target speed of " .. kaboomSpeed .. " MPH. Going below this speed will result in the bus blowing up!")
+            util.toast("Reached the speed of " .. kaboomSpeed .. " MPH. Bomb has been armed!")
             kaboomNotif = true
         end
         kaboomBelowKaboomSpeed = true
